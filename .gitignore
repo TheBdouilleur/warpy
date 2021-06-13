@@ -68,6 +68,9 @@ instance/
 # Scrapy stuff:
 .scrapy
 
+# autopep8 stuff:
+*.tmp
+
 # Sphinx documentation
 docs/_build/
 

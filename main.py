@@ -15,14 +15,14 @@ class CommandError(Exception):
 def create_ui():
     warp_checkbox = pystray.MenuItem(
         'Warpified', on_clicked, checked=lambda item: state)
-    quit_button = pystray.MenuItem('Quit warpy', on_clicked)
-    help_button = pystray.MenuItem('Get help', on_clicked)
     warpplus_checkbox = pystray.MenuItem(
         'Get Warp+ data', on_clicked, checked=lambda item: warpplus_state) 
+    quit_button = pystray.MenuItem('Quit warpy', on_clicked)
+    help_button = pystray.MenuItem('Get help', on_clicked)
     menu = pystray.Menu(
         warp_checkbox,
-        quit_button,
         warpplus_checkbox,
+        quit_button,
         help_button
     )
 

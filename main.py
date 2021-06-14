@@ -17,9 +17,12 @@ def create_ui():
         'Warpified', on_clicked, checked=lambda item: state)
     quit_button = pystray.MenuItem('Quit warpy', on_clicked)
     help_button = pystray.MenuItem('Get help', on_clicked)
+    warpplus_checkbox = pystray.MenuItem(
+        'Get Warp+ data', on_clicked, checked=lambda item: warpplus_state) 
     menu = pystray.Menu(
         warp_checkbox,
         quit_button,
+        warpplus_checkbox,
         help_button
     )
 
@@ -57,6 +60,8 @@ def on_clicked(icon, item):
                 f"[*] Successfully {'activated' if not state else 'deactivated'} Warp")
             state = not item.checked
             print(f"[*] Toggling check")
+    elif item.text == "Get Warp+ data":
+        print(f"")
     elif item.text == "Get help":
         webbrowser.open("https://github.com/TheBdouilleur/warpy/issues")
         print("[*] Opened issue page on default web browser.")
@@ -64,6 +69,7 @@ def on_clicked(icon, item):
 
 process = subprocess.run(['wgcf', 'trace'], capture_output=True)
 state = b"warp=on" in process.stdout
+warpplus_state = False
 print("[+] Starting...")
 print(f"[*] Warp is {'on' if state else 'off'}")
 ui = create_ui()

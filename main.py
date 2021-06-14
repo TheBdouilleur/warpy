@@ -62,10 +62,13 @@ def on_clicked(icon, item):
             print(f"[*] Toggling check")
     elif item.text == "Get Warp+ data":
         print(f"")
+        extract_warpplus_data()
     elif item.text == "Get help":
         webbrowser.open("https://github.com/TheBdouilleur/warpy/issues")
         print("[*] Opened issue page on default web browser.")
 
+def extract_warpplus_data():
+    pass
 
 process = subprocess.run(['wgcf', 'trace'], capture_output=True)
 state = b"warp=on" in process.stdout
